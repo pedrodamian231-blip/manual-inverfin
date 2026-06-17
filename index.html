@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manual de Identidad Visual Corporativa – Inverfin</title>
+<style>
+  /* ── TOKENS ── */
+  :root {
+    --azul:       #2A4B8D;
+    --rojo:       #AD1C1E;
+    --celeste:    #009CDF;
+    --blanco:     #FFFFFF;
+    --gris-claro: #F5F7FA;
+    --gris-medio: #E8ECF0;
+    --gris-text:  #4A4A4A;
+    --gris-osc:   #2D2D2D;
+    --verde:      #6DDC85;
+    --amarillo:   #F1EF68;
+    --rojo-sem:   #FF99A2;
+    --azul-serie: #417898;
+    --olive:      #8F997A;
+    --violeta:    #B887AD;
+    --gris-top:   #CCCCCC;
+    --font: 'Segoe UI', system-ui, sans-serif;
+    --mono: 'Courier New', monospace;
+  }
+
+  /* ── RESET & BASE ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font);
+    font-size: 14px;
+    color: var(--gris-osc);
+    background: #fff;
+    line-height: 1.6;
+  }
+
+  /* ── PRINT ── */
+  @media print {
+    .sidebar, .top-bar { display: none !important; }
+    .content { margin-left: 0 !important; }
+    .page-section { page-break-inside: avoid; }
+    a { color: inherit; text-decoration: none; }
+  }
+
+  /* ── TOP BAR ── */
+  .top-bar {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: var(--azul);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 24px;
+    height: 48px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.25);
+  }
+  .top-bar-left { display: flex; align-items: center; gap: 12px; }
+  .top-bar-logo { font-size: 18px; font-weight: 700; color: #fff; letter-spacing: .5px; }
+  .top-bar-sep { color: rgba(255,255,255,.4); }
+  .top-bar-title { font-size: 12px; color: var(--celeste); letter-spacing: .3px; }
+  .top-bar-right { font-size: 11px; color: rgba(255,255,255,.6); }
+
+  /* ── SIDEBAR ── */
+  .sidebar {
+    position: fixed; top: 48px; left: 0; bottom: 0;
+    width: 220px;
+    background: var(--gris-claro);
+    border-right: 1px solid var(--gris-medio);
+    overflow-y: auto;
+    padding: 20px 0;
+  }
+  .sidebar-label {
+    font-size: 10px; font-weight: 700; letter-spacing: 1.2px;
+    color: var(--gris-text); text-transform: uppercase;
+    padding: 0 20px 8px;
+  }
+  .sidebar a {
+    display: block;
+    padding: 7px 20px;
+    font-size: 12px;
+    color: var(--gris-text);
+    text-decoration: none;
+    border-left: 3px solid transparent;
+    transition: all .15s;
+    line-height: 1.4;
+  }
+  .sidebar a:hover, .sidebar a.active {
+    background: var(--gris-medio);
+    color: var(--azul);
+    border-left-color: var(--azul);
+  }
+  .sidebar a.sub { padding-left: 32px; font-size: 11px; }
+
+  /* ── CONTENT AREA ── */
+  .content {
+    margin-left: 220px;
+    margin-top: 48px;
+    padding: 0;
+  }
+
+  /* ── COVER ── */
+  .cover {
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+  }
+  .cover-stripe-top {
+    height: 10px;
+    background: linear-gradient(90deg, var(--azul) 70%, var(--celeste) 100%);
+  }
+  .cover-body {
+    flex: 1;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 80px 80px 60px;
+    background: var(--gris-claro);
+  }
+  .cover-brand { font-size: 52px; font-weight: 700; color: var(--azul); letter-spacing: -1px; margin-bottom: 4px; }
+  .cover-tagline { font-size: 13px; color: var(--celeste); font-style: italic; margin-bottom: 40px; }
+  .cover-rule { height: 4px; background: var(--rojo); width: 80px; margin-bottom: 32px; }
+  .cover-doc-title { font-size: 28px; font-weight: 700; color: var(--gris-osc); line-height: 1.2; margin-bottom: 8px; }
+  .cover-doc-sub { font-size: 16px; color: var(--gris-text); margin-bottom: 48px; }
+  .cover-meta {
+    display: grid; grid-template-columns: 180px 1fr;
+    border: 1px solid var(--gris-medio);
+    border-radius: 4px;
+    overflow: hidden;
+    width: fit-content;
+    min-width: 420px;
+  }
+  .cover-meta-row { display: contents; }
+  .cover-meta-row:not(:last-child) > * { border-bottom: 1px solid var(--gris-medio); }
+  .cover-meta-key {
+    background: var(--azul); color: #fff;
+    padding: 9px 16px; font-size: 12px; font-weight: 600;
+  }
+  .cover-meta-val {
+    background: #fff; color: var(--gris-osc);
+    padding: 9px 16px; font-size: 12px;
+  }
+  .cover-stripe-bottom {
+    height: 6px;
+    background: linear-gradient(90deg, var(--rojo) 60%, var(--celeste) 100%);
+  }
+
+  /* ── SECTIONS ── */
+  .page-section {
+    padding: 56px 80px;
+    border-bottom: 1px solid var(--gris-medio);
+  }
+  .page-section:last-child { border-bottom: none; }
+  .page-section:nth-child(even) { background: #fafbfc; }
+
+  .section-eyebrow {
+    font-size: 11px; font-weight: 700; letter-spacing: 1.4px;
+    color: var(--rojo); text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .section-title {
+    font-size: 22px; font-weight: 700;
+    color: var(--azul);
+    padding-bottom: 12px;
+    border-bottom: 3px solid var(--azul);
+    margin-bottom: 24px;
+  }
+  .section-lead {
+    font-size: 13px; color: var(--gris-text);
+    max-width: 760px; margin-bottom: 28px; line-height: 1.7;
+  }
+  .subsection-title {
+    font-size: 14px; font-weight: 700; color: var(--azul);
+    margin: 32px 0 12px;
+  }
+
+  /* ── TABLES ── */
+  .tbl-wrap { overflow-x: auto; margin-bottom: 24px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  thead tr { background: var(--azul); }
+  thead th {
+    color: #fff; font-weight: 600;
+    padding: 10px 14px; text-align: left;
+    white-space: nowrap;
+  }
+  tbody tr:nth-child(odd)  { background: #fff; }
+  tbody tr:nth-child(even) { background: var(--gris-claro); }
+  tbody tr:hover { background: #eef2f8; }
+  td { padding: 9px 14px; color: var(--gris-osc); border-bottom: 1px solid var(--gris-medio); vertical-align: middle; }
+  td.mono { font-family: var(--mono); font-size: 12px; font-weight: 700; }
+  td.bold { font-weight: 700; }
+  td.muted { color: var(--gris-text); font-size: 12px; }
+  td.size { color: var(--rojo); font-weight: 700; }
+  td.center { text-align: center; }
+
+  /* ── SWATCH TABLE ── */
+  .swatch-cell { width: 36px; padding: 0 !important; }
+  .swatch {
+    display: block; width: 36px; height: 36px;
+    border-right: 1px solid var(--gris-medio);
+  }
+  .hex { font-family: var(--mono); font-size: 12px; font-weight: 700; color: var(--gris-text); }
+
+  /* ── PREFIX BADGE ── */
+  .badge {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 32px; height: 32px; border-radius: 4px;
+    font-weight: 700; font-size: 13px; color: #fff;
+  }
+
+  /* ── SYNTAX BOX ── */
+  .syntax-box {
+    background: var(--gris-osc);
+    border: 2px solid var(--azul);
+    border-radius: 6px;
+    padding: 20px 28px;
+    margin: 16px 0;
+    text-align: center;
+  }
+  .syntax-main {
+    font-family: var(--mono); font-size: 20px; font-weight: 700;
+    color: var(--celeste); letter-spacing: 1px;
+    display: block; margin-bottom: 8px;
+  }
+  .syntax-examples {
+    font-family: var(--mono); font-size: 13px;
+    color: var(--amarillo); letter-spacing: .5px;
+  }
+
+  /* ── PROCESS STEPS ── */
+  .process-table table thead tr { background: var(--azul); }
+  .step-num {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 28px; height: 28px; border-radius: 50%;
+    font-weight: 700; font-size: 13px; color: #fff;
+  }
+  td.step-label { font-weight: 700; }
+
+  /* ── CHECKLIST ── */
+  .checklist-table thead tr { background: var(--azul); }
+  .cat-badge {
+    display: inline-block;
+    padding: 2px 10px; border-radius: 3px;
+    font-size: 11px; font-weight: 700; color: #fff;
+  }
+  .check-box {
+    display: inline-block;
+    width: 18px; height: 18px;
+    border: 2px solid var(--azul);
+    border-radius: 3px;
+    vertical-align: middle;
+  }
+
+  /* ── APPROVAL BOX ── */
+  .approval-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    border: 1px solid var(--gris-medio);
+    border-radius: 4px; overflow: hidden;
+    margin-top: 8px;
+  }
+  .approval-header {
+    background: var(--azul); color: #fff;
+    padding: 10px 14px; font-size: 12px; font-weight: 600;
+    border-right: 1px solid rgba(255,255,255,.2);
+  }
+  .approval-val {
+    background: var(--gris-claro); color: var(--gris-osc);
+    padding: 10px 14px; font-size: 12px;
+    border-right: 1px solid var(--gris-medio);
+    min-height: 60px;
+  }
+  .approval-header:last-child, .approval-val:last-child { border-right: none; }
+
+  /* ── CHANGE LOG ── */
+  .changelog { font-size: 13px; }
+
+  /* ── FOOTER NOTE ── */
+  .footer-note {
+    background: var(--azul); color: #fff;
+    padding: 20px 28px; border-radius: 6px;
+    text-align: center; margin-top: 32px;
+  }
+  .footer-note p:first-child { font-weight: 700; margin-bottom: 4px; }
+  .footer-note p:last-child { font-size: 12px; color: var(--celeste); }
+
+  /* ── PAGE FOOTER ── */
+  .page-footer {
+    background: var(--gris-claro);
+    border-top: 3px solid var(--azul);
+    padding: 16px 80px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 11px; color: var(--gris-text);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    .sidebar { display: none; }
+    .content { margin-left: 0; }
+    .cover-body, .page-section { padding: 40px 24px; }
+    .cover-brand { font-size: 36px; }
+    .cover-doc-title { font-size: 20px; }
+    .cover-meta { min-width: unset; width: 100%; }
+    .approval-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+
+<!-- ── TOP BAR ── -->
+<header class="top-bar">
+  <div class="top-bar-left">
+    <span class="top-bar-logo">INVERFIN</span>
+    <span class="top-bar-sep">|</span>
+    <span class="top-bar-title">Manual de Identidad Visual Corporativa</span>
+  </div>
+  <div class="top-bar-right">Versión 1.0 &nbsp;·&nbsp; Junio 2026 &nbsp;·&nbsp; Uso Interno</div>
+</header>
+
+<!-- ── SIDEBAR ── -->
+<nav class="sidebar">
+  <div class="sidebar-label">Contenido</div>
+  <a href="#portada">Portada</a>
+  <a href="#tipografia">1. Tipografía</a>
+  <a href="#colores">2. Paleta de Colores</a>
+  <a href="#colores" class="sub">2.1 Colores principales</a>
+  <a href="#calor" class="sub">2.2 Mapa de calor</a>
+  <a href="#series" class="sub">2.3 Series históricas</a>
+  <a href="#barras" class="sub">2.4 Barras comparativas</a>
+  <a href="#estructura">3. Estructura de Reportes</a>
+  <a href="#estructura" class="sub">3.1 Zonas del reporte</a>
+  <a href="#filtros" class="sub">3.2 Filtros estándar</a>
+  <a href="#nomenclatura">4. Nomenclatura</a>
+  <a href="#nomenclatura" class="sub">4.1 Estructura del nombre</a>
+  <a href="#prefijos" class="sub">4.2 Prefijos por área</a>
+  <a href="#proceso" class="sub">4.3 Proceso de aprobación</a>
+  <a href="#ejemplos" class="sub">4.4 Ejemplos</a>
+  <a href="#checklist">5. Checklist</a>
+  <a href="#historial">6. Historial</a>
+</nav>
+
+<!-- ── CONTENT ── -->
+<main class="content">
+
+  <!-- COVER -->
+  <section class="cover" id="portada">
+    <div class="cover-stripe-top"></div>
+    <div class="cover-body">
+      <div class="cover-brand">INVERFIN</div>
+      <div class="cover-tagline">Hacemos de tu agencia una fuerza</div>
+      <div class="cover-rule"></div>
+      <div class="cover-doc-title">Manual de Identidad Visual Corporativa</div>
+      <div class="cover-doc-sub">Estándar de Reportes y Visualización de Datos</div>
+      <div class="cover-meta">
+        <div class="cover-meta-row">
+          <div class="cover-meta-key">Versión</div>
+          <div class="cover-meta-val">1.0</div>
+        </div>
+        <div class="cover-meta-row">
+          <div class="cover-meta-key">Fecha de aprobación</div>
+          <div class="cover-meta-val">Junio 2026</div>
+        </div>
+        <div class="cover-meta-row">
+          <div class="cover-meta-key">Responsable</div>
+          <div class="cover-meta-val">Pedro González</div>
+        </div>
+        <div class="cover-meta-row">
+          <div class="cover-meta-key">Área</div>
+          <div class="cover-meta-val">Digitalización y Gobernanza de Datos</div>
+        </div>
+        <div class="cover-meta-row">
+          <div class="cover-meta-key">Clasificación</div>
+          <div class="cover-meta-val">Uso interno – Confidencial</div>
+        </div>
+      </div>
+    </div>
+    <div class="cover-stripe-bottom"></div>
+  </section>
+
+  <!-- 1. TIPOGRAFÍA -->
+  <section class="page-section" id="tipografia">
+    <div class="section-eyebrow">Sección 1</div>
+    <h2 class="section-title">Especificaciones Tipográficas</h2>
+    <p class="section-lead">
+      La tipografía <strong>Segoe UI</strong> es el estándar corporativo para todas las visualizaciones de datos en Power BI.
+      Su uso es obligatorio y exclusivo en todos los reportes e informes de Inverfin.
+    </p>
+
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Elemento</th>
+            <th>Fuente</th>
+            <th>Tamaño</th>
+            <th>Aplicación</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="bold">Títulos de página</td>
+            <td>Segoe UI</td>
+            <td class="size">14 pt</td>
+            <td class="muted">Nombre del informe, encabezado principal</td>
+          </tr>
+          <tr>
+            <td class="bold">Encabezados (tablas y gráficos)</td>
+            <td>Segoe UI</td>
+            <td class="size">11 pt</td>
+            <td class="muted">Títulos de columnas, secciones visuales</td>
+          </tr>
+          <tr>
+            <td class="bold">Valores (tablas y gráficos)</td>
+            <td>Segoe UI</td>
+            <td class="size">10 pt</td>
+            <td class="muted">Datos numéricos y texto en celdas</td>
+          </tr>
+          <tr>
+            <td class="bold">Segmentadores / Filtros</td>
+            <td>Segoe UI</td>
+            <td class="size">9 pt</td>
+            <td class="muted">Etiquetas de slicers y filtros interactivos</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="subsection-title">Reglas de Aplicación Tipográfica</div>
+    <ul style="padding-left:20px; color:var(--gris-text); font-size:13px; line-height:2;">
+      <li>No combinar más de un peso (bold/regular) dentro de un mismo elemento visual.</li>
+      <li>El tamaño mínimo permitido en reportes es 9 pt (filtros y segmentadores).</li>
+      <li>Los valores numéricos siempre deben usar el mismo tamaño que el texto circundante.</li>
+      <li>No utilizar fuentes alternativas ni decorativas bajo ninguna circunstancia.</li>
+    </ul>
+  </section>
+
+  <!-- 2. COLORES -->
+  <section class="page-section" id="colores">
+    <div class="section-eyebrow">Sección 2</div>
+    <h2 class="section-title">Paleta de Colores Corporativa</h2>
+    <p class="section-lead">
+      La paleta de colores corporativa de Inverfin debe aplicarse de forma consistente y exclusiva en todos los reportes,
+      dashboards y materiales de visualización de datos. Ninguna variación o color externo a esta paleta está permitido
+      sin autorización explícita.
+    </p>
+
+    <div class="subsection-title">2.1  Colores Principales</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th style="width:36px"></th><th>Descripción</th><th>Código HEX</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="swatch-cell"><span class="swatch" style="background:#2A4B8D"></span></td>
+            <td class="bold">Fondo de encabezados</td>
+            <td class="hex">#2A4B8D</td>
+          </tr>
+          <tr>
+            <td class="swatch-cell"><span class="swatch" style="background:#FFFFFF; border:1px solid #ddd"></span></td>
+            <td class="bold">Texto en encabezados</td>
+            <td class="hex">#FFFFFF</td>
+          </tr>
+          <tr>
+            <td class="swatch-cell"><span class="swatch" style="background:#AD1C1E"></span></td>
+            <td class="bold">Color de énfasis / alertas</td>
+            <td class="hex">#AD1C1E</td>
+          </tr>
+          <tr>
+            <td class="swatch-cell"><span class="swatch" style="background:#009CDF"></span></td>
+            <td class="bold">Títulos de página</td>
+            <td class="hex">#009CDF</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="subsection-title" id="calor">2.2  Formatos Condicionales – Mapa de Calor</div>
+    <p class="section-lead" style="margin-bottom:12px;">
+      Gradiente de rendimiento para tablas con indicadores de desempeño. La aplicación debe ser gradual y proporcional al rango de valores de la métrica.
+    </p>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th style="width:36px"></th><th>Nivel</th><th>Código HEX</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="swatch-cell"><span class="swatch" style="background:#FF99A2"></span></td>
+            <td class="bold">Bajo rendimiento</td>
+            <td class="hex">#FF99A2</td>
+          </tr>
+          <tr>
+            <td class="swatch-cell"><span class="swatch" style="background:#F1EF68"></span></td>
+            <td class="bold">Rendimiento medio</td>
+            <td class="hex">#F1EF68</td>
+          </tr>
+          <tr>
+            <td class="swatch-cell"><span class="swatch" style="background:#6DDC85"></span></td>
+            <td class="bold">Alto rendimiento</td>
+            <td class="hex">#6DDC85</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="subsection-title" id="series">2.3  Colores para Series Históricas</div>
+    <p class="section-lead" style="margin-bottom:12px;">
+      Aplicar en gráficos de líneas o barras agrupadas que comparen períodos temporales.
+    </p>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th style="width:36px"></th><th>Período</th><th>Código HEX</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="swatch-cell"><span class="swatch" style="background:#417898"></span></td>
+            <td class="bold">Año actual (T)</td>
+            <td class="hex">#417898</td>
+          </tr>
+          <tr>
+            <td class="swatch-cell"><span class="swatch" style="background:#8F997A"></span></td>
+            <td class="bold">Año anterior (T-1)</td>
+            <td class="hex">#8F997A</td>
+          </tr>
+          <tr>
+            <td class="swatch-cell"><span class="swatch" style="background:#B887AD"></span></td>
+            <td class="bold">Hace dos años (T-2)</td>
+            <td class="hex">#B887AD</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="subsection-title" id="barras">2.4  Colores para Gráficos de Barras Comparativos</div>
+    <p class="section-lead" style="margin-bottom:12px;">
+      Aplicar cuando se necesite destacar los valores extremos (Top / Bottom) dentro de un ranking o comparativo.
+    </p>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th style="width:36px"></th><th>Categoría</th><th>Código HEX</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="swatch-cell"><span class="swatch" style="background:#CCCCCC"></span></td>
+            <td class="bold">Valores superiores / Top</td>
+            <td class="hex">#CCCCCC</td>
+          </tr>
+          <tr>
+            <td class="swatch-cell"><span class="swatch" style="background:#AD1C1E"></span></td>
+            <td class="bold">Valores inferiores / Bottom</td>
+            <td class="hex">#AD1C1E</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 3. ESTRUCTURA -->
+  <section class="page-section" id="estructura">
+    <div class="section-eyebrow">Sección 3</div>
+    <h2 class="section-title">Estructura Estándar de Reportes en Power BI</h2>
+    <p class="section-lead">
+      Todo reporte o dashboard publicado en Power BI debe respetar la estructura y distribución visual definida a continuación.
+      Esta estructura garantiza uniformidad en la experiencia del usuario y facilita la lectura ejecutiva.
+    </p>
+
+    <div class="subsection-title">3.1  Zonas del Reporte</div>
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr><th>Zona</th><th>Contenido</th><th>Posición</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="bold">Encabezado</td>
+            <td>Logo Inverfin + Nombre del informe + Fecha de actualización</td>
+            <td class="muted">Superior – toda la anchura</td>
+          </tr>
+          <tr>
+            <td class="bold">Panel de Filtros</td>
+            <td>Segmentadores generales y comerciales</td>
+            <td class="muted">Lateral izquierdo</td>
+          </tr>
+          <tr>
+            <td class="bold">Área de Visualizaciones</td>
+            <td>Gráficos, KPIs y tablas principales</td>
+            <td class="muted">Centro – área principal</td>
+          </tr>
+          <tr>
+            <td class="bold">Indicadores KPI</td>
+            <td>Tarjetas de métricas clave</td>
+            <td class="muted">Superior del área principal</td>
+          </tr>
+          <tr>
+            <td class="bold">Detalle / Ranking</td>
+            <td>Tablas detalladas y rankings</td>
+            <td class="muted">Inferior del área principal</td>
+          </tr>
+          <tr>
+            <td class="bold">Navegación</td>
+            <td>Botones de navegación entre páginas</td>
+            <td class="muted">Inferior o lateral derecho</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="subsection-title" id="filtros">3.2  Filtros Estándar Requeridos</div>
+    <p class="section-lead" style="margin-bottom:12px;">
+      Todo reporte del canal Minoristas debe incluir como mínimo los siguientes segmentadores en el panel de filtros:
+    </p>
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr><th>Filtro</th><th>Opciones</th><th>Sección</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="bold">Canal</td><td>Minoristas / Mayoristas</td><td><span style="color:var(--celeste);font-weight:600">General</span></td></tr>
+          <tr><td class="bold">División</td><td>Selección múltiple</td><td><span style="color:var(--celeste);font-weight:600">General</span></td></tr>
+          <tr><td class="bold">Región / Gerente</td><td>Todas / Selección</td><td><span style="color:var(--celeste);font-weight:600">General</span></td></tr>
+          <tr><td class="bold">Sucursal</td><td>Todas / Selección</td><td><span style="color:var(--celeste);font-weight:600">General</span></td></tr>
+          <tr><td class="bold">Venta Colaborador</td><td>Sí / No</td><td><span style="color:var(--rojo);font-weight:600">Comercial</span></td></tr>
+          <tr><td class="bold">Sucursal Factura</td><td>Selección múltiple</td><td><span style="color:var(--rojo);font-weight:600">Comercial</span></td></tr>
+          <tr><td class="bold">Cargo</td><td>Vendedor/a / Gerente / etc.</td><td><span style="color:var(--rojo);font-weight:600">Comercial</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 4. NOMENCLATURA -->
+  <section class="page-section" id="nomenclatura">
+    <div class="section-eyebrow">Sección 4</div>
+    <h2 class="section-title">Nomenclatura, Prefijos y Gestión de Reportes</h2>
+    <p class="section-lead">
+      La nomenclatura estandarizada permite identificar de forma inmediata el área de negocio, la versión y el contenido
+      de cada informe publicado en el workspace "Indicadores de Gestión" del servicio Power BI de Inverfin.
+      Su aplicación es obligatoria para todos los informes gestionados por el equipo de Proyectos y BI, y es requisito
+      previo para la aprobación y publicación de cualquier informe de otros departamentos.
+    </p>
+
+    <div class="subsection-title">4.1  Estructura del Nombre de Informe</div>
+    <div class="syntax-box">
+      <span class="syntax-main">[PREFIJO][NN]  [NOMBRE DESCRIPTIVO]</span>
+      <span class="syntax-examples">Ejemplo:&nbsp;&nbsp; V08 VENTAS &nbsp;|&nbsp; C10 CLIENTES SIN SEGUIMIENTO &nbsp;|&nbsp; L01 RUTAS</span>
+    </div>
+
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr><th>Componente</th><th>Descripción</th><th>Valores permitidos</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="bold" style="color:var(--rojo)">PREFIJO</td>
+            <td>Letra inicial del área de negocio (ver tabla 4.2)</td>
+            <td class="mono">V, C, L, M, T, A, E, RR…</td>
+          </tr>
+          <tr>
+            <td class="bold" style="color:var(--rojo)">NN</td>
+            <td>Número de versión con dos dígitos</td>
+            <td class="mono">00, 01, 02, … 08, …</td>
+          </tr>
+          <tr>
+            <td class="bold" style="color:var(--rojo)">NOMBRE</td>
+            <td>Descripción breve del contenido, en mayúsculas</td>
+            <td class="mono">VENTAS, CARTERA, TLV…</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="subsection-title" id="prefijos">4.2  Prefijos por Área de Negocio</div>
+    <p class="section-lead" style="margin-bottom:12px;">
+      El prefijo identifica el área de negocio a la que pertenece el informe, permitiendo reconocer de forma inmediata su
+      origen sin necesidad de abrirlo. Todos los informes publicados en el workspace "Indicadores de Gestión" deben usar el
+      prefijo que corresponde a su departamento.
+    </p>
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr><th style="width:52px">Prefijo</th><th>Área</th><th>Scope del informe</th><th>Ejemplos</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="center"><span class="badge" style="background:#2A4B8D">V</span></td>
+            <td class="bold">Ventas</td>
+            <td class="muted">Informes del área comercial – ventas, productividad, objetivos, proyecciones</td>
+            <td class="mono" style="font-size:11px">V08 VENTAS, V03 VENTAS Y SC POR VENDEDOR</td>
+          </tr>
+          <tr>
+            <td class="center"><span class="badge" style="background:#AD1C1E">C</span></td>
+            <td class="bold">Cobranzas</td>
+            <td class="muted">Informes del área de cobros – cartera, morosidad, clientes, riesgo crediticio</td>
+            <td class="mono" style="font-size:11px">C10 CLIENTES SIN SEGUIMIENTO, C11 RIESGO CREDITICIO</td>
+          </tr>
+          <tr>
+            <td class="center"><span class="badge" style="background:#8F997A">L</span></td>
+            <td class="bold">Logística</td>
+            <td class="muted">Informes del área de logística – rutas, distribución, entregas</td>
+            <td class="mono" style="font-size:11px">L01 RUTAS</td>
+          </tr>
+          <tr>
+            <td class="center"><span class="badge" style="background:#B887AD">M</span></td>
+            <td class="bold">Marketing</td>
+            <td class="muted">Informes del área de marketing – campañas, promociones, análisis de mercado</td>
+            <td class="mono" style="font-size:11px">M01 CAMPAÑA COPA</td>
+          </tr>
+          <tr>
+            <td class="center"><span class="badge" style="background:#009CDF">T</span></td>
+            <td class="bold">Tesorería</td>
+            <td class="muted">Informes financieros – flujo de caja, pagos, reportes contables</td>
+            <td class="mono" style="font-size:11px">T01 FLUJO CAJA</td>
+          </tr>
+          <tr>
+            <td class="center"><span class="badge" style="background:#417898">A</span></td>
+            <td class="bold">Auditoría</td>
+            <td class="muted">Informes de control y auditoría interna</td>
+            <td class="mono" style="font-size:11px">A01 CONTROL INTERNO</td>
+          </tr>
+          <tr>
+            <td class="center"><span class="badge" style="background:#4A4A4A">E</span></td>
+            <td class="bold">Ecommerce</td>
+            <td class="muted">Indicadores del canal de venta digital</td>
+            <td class="mono" style="font-size:11px">E01 VENTA WEB</td>
+          </tr>
+          <tr>
+            <td class="center"><span class="badge" style="background:#2D2D2D">RR</span></td>
+            <td class="bold">RRHH</td>
+            <td class="muted">Indicadores de recursos humanos y gestión de personal</td>
+            <td class="mono" style="font-size:11px">RR01 AUSENTISMO</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="subsection-title" id="proceso">4.3  Proceso de Aprobación y Publicación</div>
+    <p class="section-lead" style="margin-bottom:12px;">
+      Los informes comerciales estándar son desarrollados, versionados y administrados directamente por el equipo de
+      Proyectos y BI. Los informes provenientes de otros departamentos deben pasar por el siguiente proceso antes de
+      ser publicados en el workspace correspondiente:
+    </p>
+    <div class="tbl-wrap process-table">
+      <table>
+        <thead><tr><th style="width:40px">#</th><th style="width:140px">Etapa</th><th>Descripción</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="center"><span class="step-num" style="background:var(--celeste)">1</span></td>
+            <td class="step-label">Desarrollo</td>
+            <td class="muted">El departamento solicitante desarrolla su informe adaptándose a los estándares de este manual (tipografía, colores, estructura, nomenclatura).</td>
+          </tr>
+          <tr>
+            <td class="center"><span class="step-num" style="background:var(--olive)">2</span></td>
+            <td class="step-label">Autovalidación</td>
+            <td class="muted">El responsable completa el Checklist de Validación (Sección 5) y confirma el cumplimiento de todos los criterios.</td>
+          </tr>
+          <tr>
+            <td class="center"><span class="step-num" style="background:var(--azul)">3</span></td>
+            <td class="step-label">Revisión BI</td>
+            <td class="muted">El equipo de Proyectos y BI revisa el informe. Si hay observaciones, se devuelve al paso 1 con comentarios documentados.</td>
+          </tr>
+          <tr>
+            <td class="center"><span class="step-num" style="background:var(--rojo)">4</span></td>
+            <td class="step-label">Aprobación</td>
+            <td class="muted">Una vez aprobado, el equipo BI asigna el prefijo y número de versión definitivos y realiza la publicación en el workspace correspondiente.</td>
+          </tr>
+          <tr>
+            <td class="center"><span class="step-num" style="background:#3a9a5c">5</span></td>
+            <td class="step-label">Comunicación</td>
+            <td class="muted">Se notifica al solicitante y se registra el informe en el inventario de reportes publicados.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="subsection-title" id="ejemplos">4.4  Ejemplos de Aplicación por Área</div>
+    <p style="font-size:12px; color:var(--gris-text); font-style:italic; margin-bottom:12px;">
+      La siguiente tabla muestra ejemplos representativos del sistema de nomenclatura aplicado en distintas áreas. No constituye un inventario exhaustivo de los informes publicados.
+    </p>
+    <div class="tbl-wrap">
+      <table>
+        <thead>
+          <tr><th style="width:40px"></th><th>Nombre del Informe</th><th>Área</th><th>Descripción</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="center"><span class="badge" style="background:#2A4B8D;width:24px;height:24px;font-size:11px">V</span></td>
+            <td class="mono">V08 VENTAS</td>
+            <td class="muted">Ventas</td>
+            <td class="muted">Dashboard principal de ventas – productividad, comparativo histórico y proyecciones</td>
+          </tr>
+          <tr>
+            <td class="center"><span class="badge" style="background:#2A4B8D;width:24px;height:24px;font-size:11px">V</span></td>
+            <td class="mono">V03 VENTAS Y SC POR VENDEDOR</td>
+            <td class="muted">Ventas</td>
+            <td class="muted">Detalle de venta y seguimiento comercial por vendedor</td>
+          </tr>
+          <tr>
+            <td class="center"><span class="badge" style="background:#2A4B8D;width:24px;height:24px;font-size:11px">V</span></td>
+            <td class="mono">V00 PRIMERAS CUOTAS</td>
+            <td class="muted">Ventas</td>
+            <td class="muted">Control de primeras cuotas y cobertura de plan comercial</td>
+          </tr>
+          <tr>
+            <td class="center"><span class="badge" style="background:#AD1C1E;width:24px;height:24px;font-size:11px">C</span></td>
+            <td class="mono">C10 CLIENTES SIN SEGUIMIENTO</td>
+            <td class="muted">Cobranzas</td>
+            <td class="muted">Clientes activos sin gestión de cobro registrada</td>
+          </tr>
+          <tr>
+            <td class="center"><span class="badge" style="background:#AD1C1E;width:24px;height:24px;font-size:11px">C</span></td>
+            <td class="mono">C11 RIESGO CREDITICIO</td>
+            <td class="muted">Cobranzas</td>
+            <td class="muted">Indicadores de riesgo y morosidad de la cartera</td>
+          </tr>
+          <tr>
+            <td class="center"><span class="badge" style="background:#AD1C1E;width:24px;height:24px;font-size:11px">C</span></td>
+            <td class="mono">C12 COACHING COBRANZA</td>
+            <td class="muted">Cobranzas</td>
+            <td class="muted">Herramienta de seguimiento y formación del equipo de cobros</td>
+          </tr>
+          <tr>
+            <td class="center"><span class="badge" style="background:#8F997A;width:24px;height:24px;font-size:11px">L</span></td>
+            <td class="mono">L01 RUTAS</td>
+            <td class="muted">Logística</td>
+            <td class="muted">Ejemplo de nomenclatura para informes del área logística</td>
+          </tr>
+          <tr>
+            <td class="center"><span class="badge" style="background:#B887AD;width:24px;height:24px;font-size:11px">M</span></td>
+            <td class="mono">M01 CAMPAÑA COPA</td>
+            <td class="muted">Marketing</td>
+            <td class="muted">Ejemplo de nomenclatura para informes del área de marketing</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 5. CHECKLIST -->
+  <section class="page-section" id="checklist">
+    <div class="section-eyebrow">Sección 5</div>
+    <h2 class="section-title">Checklist de Validación Antes de Publicar</h2>
+    <p class="section-lead">
+      Antes de publicar cualquier reporte en el servicio Power BI, el responsable debe verificar el cumplimiento
+      de los siguientes puntos. Todos los ítems deben estar marcados como conformes.
+    </p>
+
+    <div class="tbl-wrap checklist-table">
+      <table>
+        <thead>
+          <tr><th>Categoría</th><th style="width:40px">✓</th><th>Criterio de Validación</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="cat-badge" style="background:var(--azul)">Tipografía</span></td>
+            <td class="center"><span class="check-box"></span></td>
+            <td>Se utiliza Segoe UI en todos los elementos del reporte</td>
+          </tr>
+          <tr>
+            <td><span class="cat-badge" style="background:var(--azul)">Tipografía</span></td>
+            <td class="center"><span class="check-box"></span></td>
+            <td>Los tamaños de fuente corresponden a los definidos en la Sección 1</td>
+          </tr>
+          <tr>
+            <td><span class="cat-badge" style="background:var(--celeste)">Colores</span></td>
+            <td class="center"><span class="check-box"></span></td>
+            <td>Los encabezados de tablas y gráficos usan el fondo azul (#2A4B8D)</td>
+          </tr>
+          <tr>
+            <td><span class="cat-badge" style="background:var(--celeste)">Colores</span></td>
+            <td class="center"><span class="check-box"></span></td>
+            <td>El texto sobre encabezados oscuros es blanco (#FFFFFF)</td>
+          </tr>
+          <tr>
+            <td><span class="cat-badge" style="background:var(--celeste)">Colores</span></td>
+            <td class="center"><span class="check-box"></span></td>
+            <td>Los colores de series históricas corresponden a la sección 2.3</td>
+          </tr>
+          <tr>
+            <td><span class="cat-badge" style="background:var(--celeste)">Colores</span></td>
+            <td class="center"><span class="check-box"></span></td>
+            <td>El mapa de calor usa la gradiente definida (Rojo → Amarillo → Verde)</td>
+          </tr>
+          <tr>
+            <td><span class="cat-badge" style="background:var(--rojo)">Estructura</span></td>
+            <td class="center"><span class="check-box"></span></td>
+            <td>El reporte incluye logo Inverfin en el encabezado</td>
+          </tr>
+          <tr>
+            <td><span class="cat-badge" style="background:var(--rojo)">Estructura</span></td>
+            <td class="center"><span class="check-box"></span></td>
+            <td>La fecha de actualización de datos es visible en el encabezado</td>
+          </tr>
+          <tr>
+            <td><span class="cat-badge" style="background:var(--rojo)">Estructura</span></td>
+            <td class="center"><span class="check-box"></span></td>
+            <td>Los filtros estándar están presentes en el panel lateral</td>
+          </tr>
+          <tr>
+            <td><span class="cat-badge" style="background:var(--rojo)">Estructura</span></td>
+            <td class="center"><span class="check-box"></span></td>
+            <td>Los filtros generales y comerciales están correctamente etiquetados</td>
+          </tr>
+          <tr>
+            <td><span class="cat-badge" style="background:var(--olive)">Nomenclatura</span></td>
+            <td class="center"><span class="check-box"></span></td>
+            <td>El nombre del informe usa el prefijo correcto según el área (V=Ventas, C=Cobranzas, L=Logística, etc.)</td>
+          </tr>
+          <tr>
+            <td><span class="cat-badge" style="background:var(--olive)">Nomenclatura</span></td>
+            <td class="center"><span class="check-box"></span></td>
+            <td>El número de versión de dos dígitos está actualizado respecto a la última modificación</td>
+          </tr>
+          <tr>
+            <td><span class="cat-badge" style="background:var(--olive)">Nomenclatura</span></td>
+            <td class="center"><span class="check-box"></span></td>
+            <td>El nombre descriptivo está en mayúsculas y es claro sin necesidad de abrir el informe</td>
+          </tr>
+          <tr>
+            <td><span class="cat-badge" style="background:var(--azul-serie)">Publicación</span></td>
+            <td class="center"><span class="check-box"></span></td>
+            <td>El informe fue revisado y aprobado por el equipo de Proyectos y BI antes de publicar</td>
+          </tr>
+          <tr>
+            <td><span class="cat-badge" style="background:var(--violeta)">Accesibilidad</span></td>
+            <td class="center"><span class="check-box"></span></td>
+            <td>Hay suficiente contraste entre fondo y texto en todos los elementos</td>
+          </tr>
+          <tr>
+            <td><span class="cat-badge" style="background:var(--violeta)">Accesibilidad</span></td>
+            <td class="center"><span class="check-box"></span></td>
+            <td>Los títulos de página son legibles a primera vista</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="subsection-title">5.1  Registro de Aprobación</div>
+    <div class="approval-grid">
+      <div class="approval-header">Responsable</div>
+      <div class="approval-header">Cargo</div>
+      <div class="approval-header">Fecha</div>
+      <div class="approval-header">Firma / Aprobación</div>
+      <div class="approval-val">Pedro González</div>
+      <div class="approval-val">Analista de Digitalización y Gobernanza de Datos</div>
+      <div class="approval-val">Junio 2026</div>
+      <div class="approval-val"></div>
+    </div>
+  </section>
+
+  <!-- 6. HISTORIAL -->
+  <section class="page-section" id="historial">
+    <div class="section-eyebrow">Sección 6</div>
+    <h2 class="section-title">Historial de Versiones</h2>
+
+    <div class="tbl-wrap changelog">
+      <table>
+        <thead>
+          <tr><th>Versión</th><th>Fecha</th><th>Cambios realizados</th><th>Autor</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="bold">1.0</td>
+            <td>Junio 2026</td>
+            <td class="muted">Versión inicial del manual – definición de estructura, colores, tipografía y nomenclatura</td>
+            <td>Pedro González</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="footer-note">
+      <p>Este documento es de uso interno y confidencial.</p>
+      <p>Cualquier modificación debe ser aprobada por el responsable del área de Digitalización y Gobernanza de Datos.</p>
+    </div>
+  </section>
+
+  <!-- PAGE FOOTER -->
+  <footer class="page-footer">
+    <span>Inverfin S.A. &nbsp;·&nbsp; Uso Interno – Confidencial &nbsp;·&nbsp; Digitalización y Gobernanza de Datos</span>
+    <span>Versión 1.0 &nbsp;·&nbsp; Junio 2026</span>
+  </footer>
+
+</main>
+
+<script>
+  // Active sidebar link on scroll
+  const sections = document.querySelectorAll('[id]');
+  const links = document.querySelectorAll('.sidebar a');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        links.forEach(l => l.classList.remove('active'));
+        const active = document.querySelector(`.sidebar a[href="#${e.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-48px 0px -60% 0px' });
+  sections.forEach(s => obs.observe(s));
+</script>
+
+</body>
+</html>
